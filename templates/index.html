@@ -1,0 +1,32 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chatbot</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="chatbox">
+    <h2>AI Chatbot</h2>
+    <div id="chatlog"></div>
+    <input type="text" id="userInput" placeholder="Type here..." />
+    <button onclick="send()">Send</button>
+  </div>
+
+  <script>
+    async function send() {
+      const msg = document.getElementById("userInput").value;
+      document.getElementById("chatlog").innerHTML += `<div><b>You:</b> ${msg}</div>`;
+      const res = await fetch("/get", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ msg })
+      });
+      const data = await res.json();
+      document.getElementById("chatlog").innerHTML += `<div><b>Bot:</b> ${data.reply}</div>`;
+      document.getElementById("userInput").value = "";
+    }
+  </script>
+</body>
+</html>

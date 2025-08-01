@@ -1,0 +1,14 @@
+[
+    {
+        "patterns": ["hi", "hello", "hey"],
+        "response": "Hello! How can I help you today?"
+    },
+    {
+        "patterns": ["who are you", "what is your name"],
+        "response": "I am your friendly assistant chatbot!"
+    },
+    {
+        "patterns": ["how can I contact support", "customer care", "need help"],
+        "response": "You can contact support at help@example.com."
+    }
+]
